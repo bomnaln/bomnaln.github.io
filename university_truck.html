@@ -197,9 +197,9 @@
     display: inline-block;
     background: var(--yellow);
     color: var(--dark);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 900;
-    padding: 10px 26px;
+    padding: 9px 22px;
     border-radius: 999px;
     box-shadow: 0 4px 18px rgba(255,217,61,0.55);
     letter-spacing: 0.5px;
@@ -470,25 +470,29 @@
     background: linear-gradient(135deg, var(--yellow-light), #fff8e0);
     border: 2px solid var(--yellow);
     border-radius: 20px;
-    padding: 20px;
+    padding: 16px 16px 16px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
     box-shadow: 0 4px 18px rgba(255,217,61,0.2);
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
   }
-  .share-text { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
+  .share-text { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; flex: 1; min-width: 0; white-space: normal; word-break: keep-all; }
   .share-btn {
     background: linear-gradient(135deg, var(--yellow), #FFBA00);
     color: var(--dark);
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 14px;
     font-weight: 900;
-    padding: 12px 22px;
+    padding: 12px 18px;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     white-space: nowrap;
+    flex-shrink: 0;
     box-shadow: 0 4px 12px rgba(255,186,0,0.3);
     transition: transform 0.15s;
   }
@@ -1036,7 +1040,7 @@
 
   <!-- 하단 그룹: 태그라인 + 날짜 + TOP3 -->
   <div class="hero-bottom-group">
-    <div class="hero-date">🏆 득표 수 TOP 3 대학교에 봄날엔 디저트트럭 방문</div>
+    <div class="hero-date">🏆 득표 수 TOP 3 대학교에 봄날엔 디저트 트럭 방문</div>
     <div class="hero-tagline">🍰 우리 학교 투표하면 달콤한 간식이 온다!</div>
   </div>
 </div>
@@ -1066,16 +1070,16 @@
       </div>
       <div class="info-row">
         <div class="info-label">🎁 트럭 방문</div>
-        <div class="info-value">최종 투표 수 상위 3개 대학교에<br>디저트트럭 방문 + 봄날엔 제품 제공</div>
+        <div class="info-value">최종 투표 수 상위 3개 대학교에<br>디저트 트럭 방문 + 봄날엔 제품 제공</div>
       </div>
       <div class="highlight-box">
-        🎉 투표 수가 많을수록<br>봄날엔 디저트트럭 방문 확률 <strong>UP! UP!</strong>
+        🎉 투표 수가 많을수록<br>봄날엔 디저트 트럭 방문 확률 <strong>UP! UP!</strong>
       </div>
 
       <!-- 투표 이벤트 박스 -->
       <div style="margin-top:18px;background:#fff;border:2px solid rgba(255,107,157,0.22);border-radius:20px;padding:24px 22px 20px;box-shadow:0 4px 18px rgba(255,107,157,0.12);">
         <div style="display:inline-block;background:linear-gradient(135deg,var(--pink),var(--coral));color:#fff;font-size:12px;font-weight:900;padding:5px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:14px;">🎁 경품 이벤트</div>
-        <div style="font-size:16px;font-weight:900;color:var(--dark);margin-bottom:16px;letter-spacing:-0.2px;">💛 투표하면 이벤트는 자동 응모</div>
+        <div style="font-size:13px;font-weight:900;color:var(--dark);margin-bottom:16px;letter-spacing:-0.2px;">투표 참여 시, 경품 이벤트에 자동으로 응모됩니다💛</div>
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="display:flex;gap:10px;align-items:center;font-size:14px;">
             <span style="color:var(--pink);font-weight:900;min-width:88px;">추첨 인원</span>
