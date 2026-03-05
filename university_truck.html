@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>봄날엔 캠퍼스 어택 🚚🌸</title>
+<meta property="og:title" content="봄날엔 캠퍼스 어택 🚚🌸">
+<meta property="og:description" content="✅지금 우리 대학교는 몇 등일까요?">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PartialSansKR';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+</style>
 <style>
   :root {
     --pink: #FF6B9D;
@@ -109,9 +120,9 @@
   }
   .hero-brand-name {
     display: block;
-    font-family: 'Jua', 'Noto Sans KR', sans-serif;
+    font-family: 'PartialSansKR', sans-serif;
     font-size: clamp(20px, 5.5vw, 28px);
-    font-weight: 400;
+    font-weight: normal;
     color: rgba(255,255,255,0.95);
     letter-spacing: 6px;
     margin-bottom: 4px;
@@ -119,9 +130,9 @@
   }
   .hero-campus-attack {
     display: block;
-    font-family: 'Jua', 'Noto Sans KR', sans-serif;
+    font-family: 'PartialSansKR', sans-serif;
     font-size: clamp(46px, 13vw, 78px);
-    font-weight: 400;
+    font-weight: normal;
     line-height: 1.0;
     letter-spacing: 2px;
     background: linear-gradient(160deg, #ffffff 0%, #fff5c0 60%, #FFE566 100%);
@@ -140,9 +151,9 @@
     content: '캠퍼스 어택';
     position: absolute;
     inset: 0;
-    font-family: 'Jua', 'Noto Sans KR', sans-serif;
+    font-family: 'PartialSansKR', sans-serif;
     font-size: clamp(46px, 13vw, 78px);
-    font-weight: 400;
+    font-weight: normal;
     line-height: 1.0;
     letter-spacing: 2px;
     color: transparent;
@@ -1053,7 +1064,7 @@
       <div class="section-title">이벤트 안내</div>
       <p style="font-size:14px;font-weight:500;color:var(--dark);line-height:1.7;margin-bottom:16px;">
         중간고사로 지친 봄나리들을 위해 🌿<br>
-        4월, <strong>봄날엔 디저트트럭</strong>이 찾아갑니다🚚✨<br>
+        4월, <strong>봄날엔 디저트 트럭</strong>이 찾아갑니다🚚✨<br>
         지금 우리 학교에 투표하고, 달콤 가득 충전할 기회를 잡아보세요💛
       </p>
       <div class="info-row">
@@ -1079,7 +1090,7 @@
       <!-- 투표 이벤트 박스 -->
       <div style="margin-top:18px;background:#fff;border:2px solid rgba(255,107,157,0.22);border-radius:20px;padding:24px 22px 20px;box-shadow:0 4px 18px rgba(255,107,157,0.12);">
         <div style="display:inline-block;background:linear-gradient(135deg,var(--pink),var(--coral));color:#fff;font-size:12px;font-weight:900;padding:5px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:14px;">🎁 경품 이벤트</div>
-        <div style="font-size:13px;font-weight:900;color:var(--dark);margin-bottom:16px;letter-spacing:-0.2px;">투표 참여 시, 경품 이벤트에 자동으로 응모됩니다💛</div>
+        <div style="font-size:13px;font-weight:900;color:var(--dark);margin-bottom:16px;letter-spacing:-0.2px;">우리 대학 투표하면 경품 응모까지 한 번에!</div>
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="display:flex;gap:10px;align-items:center;font-size:14px;">
             <span style="color:var(--pink);font-weight:900;min-width:88px;">추첨 인원</span>
@@ -1242,7 +1253,7 @@
 </button>
 
 <footer>
-  🚚 봄날엔 디저트트럭 대학 대항전<br>
+  🚚 봄날엔 디저트 트럭 대학 대항전<br>
   ⓒ 2026 봄날엔. All rights reserved.
 </footer>
 
@@ -1677,7 +1688,7 @@ function shareEvent() {
   if (navigator.share) {
     navigator.share({
       title: '봄날엔 캠퍼스 어택 대학 대항전',
-      text: '우리 학교 투표하면 달콤한 디저트트럭이 온다! 지금 투표해요 🚚🌸',
+      text: '우리 학교 투표하면 달콤한 디저트 트럭이 온다! 지금 투표해요 🚚🌸',
       url: window.location.href
     }).catch(() => {});
   } else {
