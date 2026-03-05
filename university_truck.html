@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>봄날엔 캠퍼스 어택 🚚🌸</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap" rel="stylesheet">
 <style>
   :root {
     --pink: #FF6B9D;
@@ -35,25 +35,33 @@
     position: fixed;
     pointer-events: none;
     z-index: 0;
-    font-size: 28px;
-    opacity: 0.18;
-    animation: floatDeco 6s ease-in-out infinite;
+    animation: floatFade 5s ease-in-out infinite;
   }
-  .deco-float:nth-child(1) { top: 8%; left: 4%; animation-delay: 0s; }
-  .deco-float:nth-child(2) { top: 22%; right: 5%; animation-delay: 1.5s; }
-  .deco-float:nth-child(3) { top: 55%; left: 2%; animation-delay: 3s; }
-  .deco-float:nth-child(4) { top: 70%; right: 3%; animation-delay: 0.8s; }
-  .deco-float:nth-child(5) { top: 85%; left: 8%; animation-delay: 2s; }
-  @keyframes floatDeco {
-    0%,100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-18px) rotate(5deg); }
+  /* 큰 이모지 */
+  .deco-float:nth-child(1) { top: 6%;  left: 3%;  font-size:46px; animation-delay: 0s;   animation-duration:5.5s; }
+  .deco-float:nth-child(2) { top: 20%; right: 4%; font-size:38px; animation-delay: 1.8s; animation-duration:6s; }
+  .deco-float:nth-child(3) { top: 52%; left: 2%;  font-size:42px; animation-delay: 3.2s; animation-duration:5s; }
+  .deco-float:nth-child(4) { top: 70%; right: 3%; font-size:40px; animation-delay: 0.6s; animation-duration:6.5s; }
+  .deco-float:nth-child(5) { top: 85%; left: 6%;  font-size:36px; animation-delay: 2.4s; animation-duration:5.8s; }
+  /* 작은 이모지 */
+  .deco-float:nth-child(6) { top: 14%; left: 8%;  font-size:22px; animation-delay: 1.0s; animation-duration:4.5s; }
+  .deco-float:nth-child(7) { top: 38%; right: 7%; font-size:20px; animation-delay: 2.8s; animation-duration:5.2s; }
+  .deco-float:nth-child(8) { top: 60%; left: 7%;  font-size:18px; animation-delay: 0.4s; animation-duration:4.8s; }
+  .deco-float:nth-child(9) { top: 78%; right: 8%; font-size:24px; animation-delay: 3.6s; animation-duration:5.5s; }
+  .deco-float:nth-child(10){ top: 92%; left: 12%; font-size:20px; animation-delay: 1.5s; animation-duration:6s; }
+  @keyframes floatFade {
+    0%   { opacity: 0.15; transform: translateY(0)     rotate(-6deg) scale(0.92); }
+    30%  { opacity: 0.80; transform: translateY(-10px) rotate(0deg)  scale(1); }
+    60%  { opacity: 0.90; transform: translateY(-18px) rotate(5deg)  scale(1.04); }
+    85%  { opacity: 0.60; transform: translateY(-8px)  rotate(2deg)  scale(0.98); }
+    100% { opacity: 0.15; transform: translateY(0)     rotate(-6deg) scale(0.92); }
   }
 
   /* HERO SECTION */
   .hero {
     position: relative;
     background: linear-gradient(160deg, #FF6B9D 0%, #FF8C69 55%, #FFD93D 100%);
-    padding: 44px 20px 52px;
+    padding: 78px 20px 52px;
     text-align: center;
     overflow: hidden;
     z-index: 1;
@@ -62,7 +70,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    pointer-events: none;
   }
   /* decorative glow behind title */
   .hero::after {
@@ -99,28 +109,28 @@
   }
   .hero-brand-name {
     display: block;
-    font-size: clamp(15px, 4.5vw, 22px);
-    font-weight: 900;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 2px;
+    font-family: 'Jua', 'Noto Sans KR', sans-serif;
+    font-size: clamp(20px, 5.5vw, 28px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.95);
+    letter-spacing: 6px;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 8px rgba(180,40,80,0.2);
   }
   .hero-campus-attack {
     display: block;
-    font-size: clamp(44px, 13vw, 76px);
-    font-weight: 900;
+    font-family: 'Jua', 'Noto Sans KR', sans-serif;
+    font-size: clamp(46px, 13vw, 78px);
+    font-weight: 400;
     line-height: 1.0;
-    letter-spacing: -2px;
-    /* big white-to-yellow gradient, pop */
-    background: linear-gradient(160deg, #ffffff 0%, #ffffff 50%, #FFE566 100%);
+    letter-spacing: 2px;
+    background: linear-gradient(160deg, #ffffff 0%, #fff5c0 60%, #FFE566 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 4px 16px rgba(80,20,40,0.28)) drop-shadow(0 0 32px rgba(255,255,255,0.25));
+    filter: drop-shadow(0 4px 16px rgba(80,20,40,0.25));
     position: relative;
   }
-  /* outline stroke effect via text-shadow workaround */
   .hero-campus-attack-wrap {
     position: relative;
     display: inline-block;
@@ -130,12 +140,13 @@
     content: '캠퍼스 어택';
     position: absolute;
     inset: 0;
-    font-size: clamp(44px, 13vw, 76px);
-    font-weight: 900;
+    font-family: 'Jua', 'Noto Sans KR', sans-serif;
+    font-size: clamp(46px, 13vw, 78px);
+    font-weight: 400;
     line-height: 1.0;
-    letter-spacing: -2px;
+    letter-spacing: 2px;
     color: transparent;
-    -webkit-text-stroke: 6px rgba(180,40,80,0.25);
+    -webkit-text-stroke: 5px rgba(180,40,80,0.18);
     z-index: -1;
   }
 
@@ -175,30 +186,28 @@
   }
   .hero-tagline {
     display: inline-block;
-    background: var(--yellow);
-    color: var(--dark);
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 900;
-    padding: 12px 28px;
-    border-radius: 999px;
-    box-shadow: 0 4px 18px rgba(255,217,61,0.55);
+    color: rgba(255,255,255,1);
     letter-spacing: 0.3px;
+    padding: 4px 0;
+    text-shadow: 0 2px 8px rgba(180,40,80,0.15);
   }
   .hero-date {
     display: inline-block;
-    background: rgba(255,255,255,0.22);
-    border: 2px solid rgba(255,255,255,0.45);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 8px 22px;
+    background: var(--yellow);
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 900;
+    padding: 10px 26px;
     border-radius: 999px;
-    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 18px rgba(255,217,61,0.55);
+    letter-spacing: 0.5px;
   }
   .hero-top3 {
-    font-size: 12.5px;
-    color: rgba(255,255,255,0.88);
-    font-weight: 700;
+    font-size: 14px;
+    color: rgba(255,255,255,0.92);
+    font-weight: 400;
   }
 
   .container { max-width: 480px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
@@ -207,16 +216,16 @@
   .section { margin: 24px 0; }
   .card {
     background: var(--white);
-    border-radius: 20px;
-    padding: 24px 20px;
+    border-radius: 22px;
+    padding: 32px 26px;
     box-shadow: var(--shadow);
     border: 2px solid rgba(255,107,157,0.08);
   }
   .section-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
     color: var(--pink);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -232,20 +241,20 @@
 
   .info-row {
     display: flex;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 14px;
+    margin-bottom: 16px;
     align-items: flex-start;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.75;
   }
   .info-label {
-    font-weight: 700;
+    font-weight: 800;
     color: var(--pink);
     white-space: nowrap;
-    min-width: 76px;
-    font-size: 13px;
+    min-width: 82px;
+    font-size: 15px;
   }
-  .info-value { color: var(--dark); font-weight: 500; }
+  .info-value { color: var(--dark); font-weight: 600; font-size: 15px; }
 
   .highlight-box {
     background: linear-gradient(135deg, var(--pink-pale), var(--yellow-light));
@@ -291,8 +300,8 @@
   .step-wrap { display: flex; flex-direction: column; gap: 18px; }
   .step-item {
     background: var(--white);
-    border-radius: 18px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 28px 24px;
     box-shadow: 0 2px 14px rgba(255,107,157,0.12);
     border: 2px solid rgba(255,107,157,0.08);
     position: relative;
@@ -301,22 +310,22 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     background: linear-gradient(135deg, var(--pink), var(--coral));
     color: #fff;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 900;
     border-radius: 50%;
     margin-bottom: 10px;
     box-shadow: 0 3px 10px rgba(255,107,157,0.35);
   }
   .step-label {
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
     color: var(--pink);
-    letter-spacing: 1px;
-    margin-left: 8px;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
     vertical-align: middle;
   }
 
@@ -324,10 +333,10 @@
   .school-search-wrap { position: relative; }
   .school-input {
     width: 100%;
-    padding: 14px 48px 14px 18px;
+    padding: 16px 48px 16px 18px;
     border: 2px solid var(--pink-light);
     border-radius: 14px;
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Noto Sans KR', sans-serif;
     color: var(--dark);
     background: var(--pink-pale);
@@ -400,10 +409,10 @@
   /* TEXT INPUTS */
   .text-input {
     width: 100%;
-    padding: 14px 18px;
+    padding: 16px 18px;
     border: 2px solid var(--pink-light);
     border-radius: 14px;
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Noto Sans KR', sans-serif;
     color: var(--dark);
     background: var(--pink-pale);
@@ -419,7 +428,7 @@
   .text-input::placeholder { color: #C9A0B3; }
 
   .input-hint {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--gray);
     margin-top: 6px;
     font-weight: 500;
@@ -677,19 +686,333 @@
     font-weight: 500;
   }
 
+
+  /* ── 순위 카드 래퍼 ── */
+  .ranking-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 22px 16px 20px;
+    box-shadow: 0 6px 28px rgba(255,107,157,0.13);
+    border: 2px solid rgba(255,107,157,0.08);
+  }
+  .ranking-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .ranking-title-text {
+    font-size: 19px;
+    font-weight: 900;
+    color: var(--dark);
+  }
+  .ranking-live-dot {
+    width: 8px; height: 8px;
+    background: #FF4757;
+    border-radius: 50%;
+    animation: livePulse 1.4s ease-in-out infinite;
+    display: inline-block;
+    margin-right: 4px;
+  }
+  .ranking-live-label { font-size: 11px; font-weight: 700; color: #FF4757; }
+  @keyframes livePulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.5); }
+  }
+
+  /* ── 강화된 포디움 ── */
+  .podium { display: flex; align-items: flex-end; justify-content: center; gap: 10px; margin: 10px 0 22px; }
+  .podium-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .podium-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 7px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .p1 .podium-avatar { background: linear-gradient(135deg,#FFD93D,#FFBA00); width:60px; height:60px; font-size:26px; box-shadow:0 6px 20px rgba(255,186,0,0.4); }
+  .p2 .podium-avatar { background: linear-gradient(135deg,#E8E8F0,#C8C8D8); }
+  .p3 .podium-avatar { background: linear-gradient(135deg,#FFD1A4,#FFAA6E); }
+  .podium-school { font-size: 12px; font-weight: 800; text-align: center; color: var(--dark); margin-bottom: 4px; line-height: 1.35; word-break: keep-all; }
+  .p1 .podium-school { font-size: 13px; }
+  .podium-votes { font-size: 12px; font-weight: 700; color: var(--pink); margin-bottom: 5px; }
+  .podium-block {
+    width: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start;
+    padding-top: 13px; border-radius: 14px 14px 8px 8px;
+    font-size: 11px; font-weight: 900; color: rgba(255,255,255,0.9);
+  }
+  .p1 .podium-block { height: 120px; background: linear-gradient(170deg,#FFD93D,#FFBA00); box-shadow: 0 8px 24px rgba(255,186,0,0.35); }
+  .p2 .podium-block { height: 88px;  background: linear-gradient(170deg,#C8D0E0,#A0AABF); box-shadow: 0 6px 18px rgba(160,170,191,0.3); }
+  .p3 .podium-block { height: 68px;  background: linear-gradient(170deg,#FFBE8A,#FF9A50); box-shadow: 0 5px 16px rgba(255,154,80,0.3); }
+  .p2 { order: -1; }
+  .podium-rank-emoji { font-size: 22px; margin-bottom: 2px; }
+  .podium-rank-num { font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 700; }
+
+  /* ── 강화된 전체 순위 리스트 ── */
+  .rank-list { display: flex; flex-direction: column; gap: 10px; }
+  .rank-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    background: var(--pink-pale);
+    border-radius: 14px;
+    border: 1.5px solid rgba(255,107,157,0.1);
+    position: relative; overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .rank-item::before {
+    content: ''; position: absolute; left:0; top:0; bottom:0;
+    width: 4px; background: linear-gradient(to bottom, var(--pink), var(--yellow));
+    border-radius: 4px 0 0 4px;
+  }
+  .rank-item.top1 { background: linear-gradient(135deg,#FFFBE6,#FFF3B0); border-color: rgba(255,186,0,0.2); }
+  .rank-item.top1::before { background: linear-gradient(to bottom,#FFD93D,#FFBA00); }
+  .rank-item.top2 { background: linear-gradient(135deg,#F4F4FA,#E8E8F4); border-color: rgba(160,170,191,0.2); }
+  .rank-item.top2::before { background: linear-gradient(to bottom,#C8D0E0,#A0AABF); }
+  .rank-item.top3 { background: linear-gradient(135deg,#FFF3E8,#FFE8D0); border-color: rgba(255,154,80,0.18); }
+  .rank-item.top3::before { background: linear-gradient(to bottom,#FFBE8A,#FF9A50); }
+  .rank-item:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(255,107,157,0.12); }
+  .rank-num {
+    width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+    background: #fff; border-radius: 10px; font-size: 14px; font-weight: 900;
+    color: var(--gray); flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  .rank-item.top1 .rank-num { color:#C8920A; background:#FFE680; }
+  .rank-item.top2 .rank-num { color:#6E7A90; background:#DDE1EC; }
+  .rank-item.top3 .rank-num { color:#C06020; background:#FFDCB8; }
+  .rank-info { flex: 1; min-width: 0; }
+  .rank-school { font-size: 14px; font-weight: 800; color: var(--dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rank-bar-wrap { width:100%; height:6px; background:rgba(255,107,157,0.12); border-radius:99px; overflow:hidden; margin-top:5px; }
+  .rank-bar { height:100%; background: linear-gradient(to right, var(--pink), var(--yellow)); border-radius:99px; transition: width 0.9s cubic-bezier(0.34,1.1,0.64,1); }
+  .rank-votes-col { display:flex; flex-direction:column; align-items:flex-end; gap:2px; flex-shrink:0; }
+  .rank-votes { font-size: 16px; font-weight: 900; color: var(--pink); }
+  .rank-votes-label { font-size: 10px; font-weight: 700; color: var(--gray); }
+
+  /* ── 중복 투표 배너 ── */
+  /* ── 중복 투표 카운트다운 박스 ── */
+  .dup-banner { display: none; }
+  .dup-banner.show { display: block; }
+
+  .cd-box {
+    display: none;
+    background: linear-gradient(135deg, #FF6B9D 0%, #FF8C69 100%);
+    border-radius: 22px;
+    padding: 32px 24px 28px;
+    text-align: center;
+    color: #fff;
+    margin-top: 16px;
+    box-shadow: 0 8px 28px rgba(255,107,157,0.4);
+    animation: cdBoxIn 0.5s cubic-bezier(0.34,1.3,0.64,1);
+  }
+  .cd-box.show { display: block; }
+  @keyframes cdBoxIn {
+    from { opacity:0; transform: scale(0.93) translateY(12px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+  .cd-box-timer-wrap {
+    background: rgba(255,255,255,0.2);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 18px;
+    padding: 20px 28px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  .cd-box-timer-label {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1px; opacity: 0.88;
+    margin-bottom: 10px;
+  }
+  .cd-box-timer {
+    font-size: 52px; font-weight: 900;
+    letter-spacing: 4px; line-height: 1;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    width: 100%; text-align: center;
+  }
+  .cd-box-unit {
+    display: flex; justify-content: center;
+    width: 100%; margin-top: 6px;
+  }
+  .cd-box-unit span {
+    flex: 1; text-align: center;
+    font-size: 11px; font-weight: 700; opacity: 0.8;
+  }
+  .cd-box-sub {
+    margin-top: 14px;
+    font-size: 13px; font-weight: 600; opacity: 0.9;
+  }
+
+  /* ── 유의사항 ── */
+  .notice-card {
+    background: linear-gradient(135deg, #FFF8F0, #FFF3E8);
+    border: 2px solid rgba(255,140,105,0.2);
+    border-left: 5px solid var(--coral);
+    border-radius: 18px;
+    padding: 22px 20px 20px;
+    box-shadow: 0 4px 16px rgba(255,140,105,0.1);
+  }
+  .notice-title {
+    font-size: 16px; font-weight: 900; color: var(--coral);
+    margin-bottom: 14px;
+  }
+  .notice-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .notice-list li {
+    font-size: 13px; font-weight: 500; color: var(--dark);
+    line-height: 1.65; padding-left: 18px; position: relative;
+  }
+  .notice-list li::before {
+    content: '*'; position: absolute; left: 0;
+    color: var(--coral); font-weight: 900; font-size: 14px;
+  }
   /* Scrollbar */
   .school-dropdown::-webkit-scrollbar { width: 6px; }
   .school-dropdown::-webkit-scrollbar-track { background: transparent; }
   .school-dropdown::-webkit-scrollbar-thumb { background: var(--pink-light); border-radius: 99px; }
+
+  
+
+  /* ══ 이미 투표 오버레이 ══ */
+  .voted-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: linear-gradient(160deg, #FF6B9D 0%, #FF8C69 50%, #FFD93D 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+    overflow-y: auto;
+  }
+  .voted-overlay.show { display: flex; }
+  .voted-ov-emoji { font-size: 72px; margin-bottom: 16px; animation: bounce 1.2s ease-in-out infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .voted-ov-title {
+    font-size: 28px; font-weight: 900; color: #fff;
+    margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  }
+  .voted-ov-sub {
+    font-size: 14px; color: rgba(255,255,255,0.92);
+    font-weight: 600; line-height: 1.7; margin-bottom: 32px;
+  }
+  .voted-ov-card {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.45);
+    border-radius: 28px;
+    padding: 28px 36px 24px;
+    width: 100%; max-width: 310px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .voted-ov-card-label {
+    font-size: 11px; font-weight: 800; letter-spacing: 2px;
+    color: rgba(255,255,255,0.85); text-transform: uppercase; margin-bottom: 12px;
+    text-align: center; width: 100%;
+  }
+  .voted-ov-timer {
+    font-size: 56px; font-weight: 900; color: #fff;
+    letter-spacing: 4px; line-height: 1;
+    text-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    font-variant-numeric: tabular-nums;
+    text-align: center; width: 100%;
+  }
+  .voted-ov-units {
+    display: flex; justify-content: center; margin-top: 8px; width: 100%;
+  }
+  .voted-ov-units span {
+    font-size: 11px; font-weight: 700;
+    color: rgba(255,255,255,0.8); flex: 1; text-align: center;
+  }
+  .voted-ov-hint {
+    font-size: 12px; color: rgba(255,255,255,0.75);
+    font-weight: 600; margin-top: 12px; text-align: center;
+  }
+  .voted-ov-btn {
+    background: rgba(255,255,255,0.22);
+    border: 2.5px solid rgba(255,255,255,0.55);
+    border-radius: 16px; color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px; font-weight: 800;
+    padding: 14px 36px; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.3px;
+  }
+  .voted-ov-btn:hover { background: rgba(255,255,255,0.35); transform: translateY(-2px); }
+  .voted-ov-btn:active { transform: translateY(0); }
+
+
+  /* ── 순위 플로팅 버튼 ── */
+  .rank-float-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 18px;
+    z-index: 500;
+    background: linear-gradient(135deg, #FF6B9D, #FF8C69);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 22px 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(255,107,157,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: floatBtn 2.5s ease-in-out infinite;
+  }
+  .rank-float-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 30px rgba(255,107,157,0.6); }
+  .rank-float-btn:active { transform: scale(0.96); }
+  @keyframes floatBtn {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .rank-float-btn .btn-icon { font-size: 24px; }
+
 </style>
 </head>
 <body>
 
 <!-- Floating decoration -->
+<!-- ══ 이미 투표 오버레이 ══ -->
+<div class="voted-overlay" id="votedOverlay">
+  <div class="voted-ov-emoji">⏰</div>
+  <div class="voted-ov-title">이미 투표하셨어요!</div>
+  <div class="voted-ov-sub">
+    동일한 이름과 전화번호로<br>
+    이미 투표가 완료됐어요 💛<br>
+    아래 시간 후 다시 투표할 수 있어요!
+  </div>
+  <div class="voted-ov-card">
+    <div class="voted-ov-card-label">⏳ 다음 투표까지</div>
+    <div class="voted-ov-timer" id="votedOvTimer">--:--:--</div>
+    <div class="voted-ov-units">
+      <span>시간</span><span>분</span><span>초</span>
+    </div>
+    <div class="voted-ov-hint">후 다시 투표할 수 있어요</div>
+  </div>
+  <button class="voted-ov-btn" onclick="closeVotedOv()">순위 보러 가기 👑</button>
+</div>
+
 <div class="deco-float">🌸</div>
 <div class="deco-float">🍓</div>
 <div class="deco-float">🌷</div>
 <div class="deco-float">🍰</div>
+<div class="deco-float">🌼</div>
+<div class="deco-float">🌸</div>
+<div class="deco-float">🍰</div>
+<div class="deco-float">🍓</div>
+<div class="deco-float">🌷</div>
 <div class="deco-float">🌼</div>
 
 <!-- HERO -->
@@ -713,9 +1036,8 @@
 
   <!-- 하단 그룹: 태그라인 + 날짜 + TOP3 -->
   <div class="hero-bottom-group">
+    <div class="hero-date">🏆 득표 수 TOP 3 대학교에 봄날엔 디저트트럭 방문</div>
     <div class="hero-tagline">🍰 우리 학교 투표하면 달콤한 간식이 온다!</div>
-    <div class="hero-date">📅 3월 16일(월) ~ 3월 29일(일)</div>
-    <div class="hero-top3">🏆 득표 수 TOP 3 대학교에 디저트트럭 방문!</div>
   </div>
 </div>
 
@@ -727,7 +1049,7 @@
       <div class="section-title">이벤트 안내</div>
       <p style="font-size:14px;font-weight:500;color:var(--dark);line-height:1.7;margin-bottom:16px;">
         중간고사로 지친 봄나리들을 위해 🌿<br>
-        4월, <strong>봄날엔 디저트트럭</strong>이 달콤하게 찾아갑니다🚚✨<br>
+        4월, <strong>봄날엔 디저트트럭</strong>이 찾아갑니다🚚✨<br>
         지금 우리 학교에 투표하고, 달콤 가득 충전할 기회를 잡아보세요💛
       </p>
       <div class="info-row">
@@ -736,7 +1058,7 @@
       </div>
       <div class="info-row">
         <div class="info-label">🙋 참여 대상</div>
-        <div class="info-value">봄날엔을 사랑하는 전국 대학생<br><span style="font-size:12px;color:var(--gray);">(재학생, 휴학생 가능 *졸업생 불가)</span></div>
+        <div class="info-value">봄날엔을 사랑하는 전국 대학생</div>
       </div>
       <div class="info-row">
         <div class="info-label">🏫 대상 학교</div>
@@ -749,16 +1071,44 @@
       <div class="highlight-box">
         🎉 투표 수가 많을수록<br>봄날엔 디저트트럭 방문 확률 <strong>UP! UP!</strong>
       </div>
+
+      <!-- 투표 이벤트 박스 -->
+      <div style="margin-top:18px;background:#fff;border:2px solid rgba(255,107,157,0.22);border-radius:20px;padding:24px 22px 20px;box-shadow:0 4px 18px rgba(255,107,157,0.12);">
+        <div style="display:inline-block;background:linear-gradient(135deg,var(--pink),var(--coral));color:#fff;font-size:12px;font-weight:900;padding:5px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:14px;">🎁 경품 이벤트</div>
+        <div style="font-size:16px;font-weight:900;color:var(--dark);margin-bottom:16px;letter-spacing:-0.2px;">💛 투표하면 이벤트는 자동 응모</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:10px;align-items:center;font-size:14px;">
+            <span style="color:var(--pink);font-weight:900;min-width:88px;">추첨 인원</span>
+            <span style="color:var(--dark);font-weight:600;">20명 랜덤 추첨</span>
+          </div>
+          <div style="height:1px;background:rgba(255,107,157,0.12);"></div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:14px;">
+            <span style="color:var(--pink);font-weight:900;min-width:88px;">이벤트 경품</span>
+            <span style="color:var(--dark);font-weight:600;">초코퐁당 시리즈 1종 증정</span>
+          </div>
+          <div style="height:1px;background:rgba(255,107,157,0.12);"></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;">
+            <span style="color:var(--pink);font-weight:900;min-width:88px;">당첨자 발표</span>
+            <span style="color:var(--dark);font-weight:600;line-height:1.6;">3월 31일(화)<br><span style="font-size:12px;color:var(--gray);">당첨자 개별 연락 예정</span></span>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1.5px dashed rgba(255,107,157,0.25);font-size:12.5px;font-weight:800;color:var(--pink);line-height:1.65;text-align:center;">
+          📞 투표 시 입력한 전화번호로 당첨 안내 후, 경품 발송 예정
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- VOTE -->
   <div class="section">
     <div class="vote-header">
-      <h2>🗳️ 투표하고 우리 대학교<br>순위 올리자!</h2>
-      <p>매일 투표할 수 있어요!</p>
+      <h2 style="white-space:nowrap;font-size:clamp(16px,4.5vw,22px);">🗳️ 투표하고 우리 대학교 순위 올리자!</h2>
+      <p style="font-size:12px;opacity:0.85;font-weight:600;margin-top:6px;">하루 1회 투표할 수 있어요!</p>
     </div>
 
+
+    <!-- 중복 투표 배너 (숨김 유지) -->
+    <div class="dup-banner" id="dupBanner"></div>
     <div class="step-wrap">
       <!-- STEP 1 -->
       <div class="step-item">
@@ -785,6 +1135,7 @@
           <span class="step-label">STEP · 이름</span>
         </div>
         <input type="text" class="text-input" id="nameInput" placeholder="이름을 입력하세요" style="margin-top:12px;">
+        <div class="input-hint" style="margin-top:6px;">* 이름 철자를 정확히 입력해 주세요.</div>
       </div>
 
       <!-- STEP 3 -->
@@ -795,17 +1146,30 @@
         </div>
         <input type="tel" class="text-input" id="phoneInput" placeholder="010-0000-0000" style="margin-top:12px;">
         <div class="input-hint">* 숫자만 입력해도 됩니다 (예: 01012345678)</div>
+        <div class="input-hint" style="margin-top:8px;color:var(--pink);font-weight:800;font-size:12.5px;line-height:1.8;">* 연락 가능한 본인 전화번호를 정확히 기재해 주세요.<br>* 잘못된 번호 또는 타인 번호 입력 시 투표 수/경품 당첨이 무효될 수 있습니다.</div>
       </div>
     </div>
 
     <p class="privacy-note">* 투표 참여 시 개인정보 수집·이용에 동의한 것으로 간주됩니다.<br>수집된 정보는 이벤트 운영 목적으로만 사용됩니다.</p>
     <button class="vote-btn" id="voteBtn" onclick="submitVote()">🌸 투표하기</button>
+
+    <!-- 24시간 카운트다운 박스 -->
+    <div class="cd-box" id="cdBox">
+      <div class="cd-box-timer-wrap">
+        <div class="cd-box-timer-label">⏰ 다음 투표까지</div>
+        <div class="cd-box-timer" id="cdTimer">--:--:--</div>
+        <div class="cd-box-unit">
+          <span>시간</span><span>분</span><span>초</span>
+        </div>
+      </div>
+      <div class="cd-box-sub">후 다시 투표할 수 있어요</div>
+    </div>
   </div>
 
   <!-- SHARE -->
   <div class="section">
     <div class="share-card">
-      <div class="share-text">🎀 친구에게 이 이벤트를<br>공유해주세요!</div>
+      <div class="share-text" style="white-space:nowrap;">🎀 친구에게 이벤트를 공유해주세요!</div>
       <button class="share-btn" onclick="shareEvent()">📤 공유하기</button>
     </div>
   </div>
@@ -814,21 +1178,24 @@
 
   <!-- RANKING -->
   <div class="section">
-    <div class="section-title" style="margin-bottom:8px;">👑 실시간 순위</div>
-
-    <div class="tab-wrap">
-      <button class="tab-btn active" id="tab-top3" onclick="switchTab('top3')">🏆 TOP 3 단상</button>
-      <button class="tab-btn" id="tab-all" onclick="switchTab('all')">📋 전체 순위</button>
-    </div>
-
-    <!-- TOP 3 PODIUM -->
-    <div id="top3View">
-      <div class="podium" id="podium"></div>
-    </div>
-
-    <!-- ALL RANKING -->
-    <div id="allView" style="display:none;">
-      <div class="rank-list" id="rankList"></div>
+    <div class="ranking-card">
+      <div class="ranking-header">
+        <div class="ranking-title-text">👑 실시간 순위</div>
+        <div style="display:flex;align-items:center;">
+          <span class="ranking-live-dot"></span>
+          <span class="ranking-live-label">LIVE</span>
+        </div>
+      </div>
+      <div class="tab-wrap">
+        <button class="tab-btn active" id="tab-top3" onclick="switchTab('top3')">🏆 TOP 3 단상</button>
+        <button class="tab-btn" id="tab-all" onclick="switchTab('all')">📋 전체 순위</button>
+      </div>
+      <div id="top3View">
+        <div class="podium" id="podium"></div>
+      </div>
+      <div id="allView" style="display:none;">
+        <div class="rank-list" id="rankList"></div>
+      </div>
     </div>
   </div>
 
@@ -847,11 +1214,32 @@
     </div>
   </div>
 
+  <div class="divider"></div>
+
+  <!-- 유의사항 -->
+  <div class="section">
+    <div class="notice-card">
+      <div class="notice-title">📢 마지막에 꼭 읽어주세요!</div>
+      <ul class="notice-list">
+        <li>캠퍼스에 찾아가는 봄날엔 디저트 트럭은 대학 교내에서 진행하는 행사입니다. 선정된 대학 중 학교측에서 원하지 않거나 진행 환경이 어려운 경우에는 진행이 취소될 수 있습니다.</li>
+        <li>선정된 TOP 3 대학 중 진행할 수 없는 대학이 생길 경우 차순위 대학으로 진행됩니다.</li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
+
+
+<!-- 순위 플로팅 버튼 -->
+<button class="rank-float-btn" onclick="document.querySelector('.ranking-card').scrollIntoView({behavior:'smooth',block:'start'})">
+  <span class="btn-icon">👑</span>
+  <span>실시간 순위</span>
+</button>
+
 <footer>
-  🚚 봄날엔 캠퍼스 어택 대학 대항전<br>
-  ⓒ 2025 봄날엔. All rights reserved.
+  🚚 봄날엔 디저트트럭 대학 대항전<br>
+  ⓒ 2026 봄날엔. All rights reserved.
 </footer>
 
 <!-- TOAST -->
@@ -887,21 +1275,111 @@ let selectedSchool = '';
 let totalVotes = 0;
 let currentTab = 'top3';
 
+// ══════════════════════════════════════════════════════════
+// ⏰ 이미 투표 오버레이 — localStorage 기반 24시간 차단
+// ══════════════════════════════════════════════════════════
+const LS_KEY = 'bom_voted'; // { name, phone, time }
+let _ovTimer = null;
+
+// 오버레이 표시
+function showVotedOverlay(lastVoteISO) {
+  const el = document.getElementById('votedOverlay');
+  const timerEl = document.getElementById('votedOvTimer');
+  el.classList.add('show');
+  document.body.style.overflow = 'hidden';
+
+  if (_ovTimer) clearInterval(_ovTimer);
+  function tick() {
+    const diff = new Date(lastVoteISO).getTime() + 24 * 3600 * 1000 - Date.now();
+    if (diff <= 0) { clearInterval(_ovTimer); closeVotedOv(); return; }
+    const h = String(Math.floor(diff / 3600000)).padStart(2,'0');
+    const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+    const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+    timerEl.textContent = h + ':' + m + ':' + s;
+  }
+  tick();
+  _ovTimer = setInterval(tick, 1000);
+}
+
+// 오버레이 닫기 (순위로 이동)
+function closeVotedOv() {
+  document.getElementById('votedOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+  if (_ovTimer) clearInterval(_ovTimer);
+  const rankEl = document.querySelector('.ranking-card');
+  if (rankEl) rankEl.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// 기존 코드 호환용
+function showDupBanner(t) { showVotedOverlay(t); }
+function hideDupBanner()  { closeVotedOv(); }
+
+// 로컬 투표 기록 저장
+function saveVoteLocal(name, phone) {
+  localStorage.setItem(LS_KEY, JSON.stringify({
+    name: name, phone: phone, time: new Date().toISOString()
+  }));
+}
+
+// 로컬 중복 체크 — 이름+전화번호 일치 & 24시간 이내
+function checkVoteLocal(name, phone) {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw);
+    if (saved.name !== name || saved.phone !== phone) return null;
+    const diff = Date.now() - new Date(saved.time).getTime();
+    if (diff < 24 * 3600 * 1000) return saved.time;
+    return null;
+  } catch(e) { return null; }
+}
+
+// 페이지 로드 시 — 입력값 없어도 마지막 투표 기록으로 오버레이
+function checkVoteOnLoad() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    const diff = Date.now() - new Date(saved.time).getTime();
+    if (diff < 24 * 3600 * 1000) {
+      showVotedOverlay(saved.time);
+    } else {
+      localStorage.removeItem(LS_KEY);
+    }
+  } catch(e) {}
+}
+
+
 // ==============================
 // 🔗 Google Sheets 데이터 가져오기 (GET)
 // ==============================
 async function fetchFromSheet() {
   try {
-    const response = await fetch(SCRIPT_URL);
-    if (!response.ok) throw new Error('fetch error');
-    voteData = await response.json();
+    // 캐시 방지를 위해 timestamp 파라미터 추가
+    const url = SCRIPT_URL + '?t=' + Date.now();
+    const response = await fetch(url, {
+      method: 'GET',
+      redirect: 'follow',
+    });
+    const text = await response.text();
+    // Apps Script가 리다이렉트를 거칠 수 있으므로 text로 받아서 파싱
+    try {
+      voteData = JSON.parse(text);
+    } catch(parseErr) {
+      console.error('JSON 파싱 오류, 응답:', text.slice(0, 200));
+      voteData = {};
+    }
     totalVotes = Object.values(voteData).reduce((a, b) => a + b, 0);
     renderRanking();
     updateTotal();
     updateTime();
   } catch(e) {
     console.error('데이터 로드 실패:', e);
-    showToast('데이터를 불러오지 못했습니다. 🔄');
+    // 로드 실패해도 빈 순위로 표시 (페이지는 정상 동작)
+    voteData = {};
+    renderRanking();
+    updateTotal();
+    updateTime();
   }
 }
 
@@ -978,43 +1456,117 @@ document.getElementById('clearSchool').addEventListener('click', function() {
 });
 
 // ==============================
-// 🗳️ 투표하기 (Google Sheets POST)
+// ⏰ 중복 투표 배너 & 카운트다운
+// ==============================
+let countdownTimer = null;
+
+
+
+function saveLocalVote(name, phone) {
+  const key = 'bom_lastVote_' + name + '_' + phone;
+  localStorage.setItem(key, new Date().toISOString());
+  // 전체 오버레이용 키도 저장
+  localStorage.setItem('bom_lastVote', new Date().toISOString());
+}
+
+// ── 페이지 로드 시 localStorage 기반 중복 체크 ───────────────
+function checkOnLoad() {
+  const lastVote = localStorage.getItem('bom_lastVote');
+  if (!lastVote) return;
+  const diff = Date.now() - new Date(lastVote).getTime();
+  if (diff < 24 * 3600 * 1000) {
+    showDupBanner(lastVote);
+  } else {
+    localStorage.removeItem('bom_lastVote');
+  }
+}
+
+// ==============================
+// 🗳️ 투표하기
+// 시트 저장 순서: 투표일시 | 학교 | 이름 | 전화번호
+// 중복 기준: 이름 + 전화번호, 24시간 1회
 // ==============================
 async function submitVote() {
-  const name = document.getElementById('nameInput').value.trim();
+  const name  = document.getElementById('nameInput').value.trim();
   const phone = document.getElementById('phoneInput').value.trim();
 
   if (!selectedSchool) { showToast('학교를 선택해주세요! 🏫'); return; }
-  if (!name) { showToast('이름을 입력해주세요! 😊'); return; }
-  if (!phone) { showToast('전화번호를 입력해주세요! 📞'); return; }
+  if (!name)           { showToast('이름을 입력해주세요! 😊'); return; }
+  if (!phone)          { showToast('전화번호를 입력해주세요! 📞'); return; }
+
   const cleanPhone = phone.replace(/[^0-9]/g, '');
   if (cleanPhone.length < 10 || cleanPhone.length > 11) {
     showToast('올바른 전화번호를 입력해주세요! 📞'); return;
   }
 
+  // ── STEP 1: 로컬 캐시로 먼저 중복 확인 ──────────────────────
+  const localTime = checkVoteLocal(name, cleanPhone);
+  if (localTime) {
+    showVotedOverlay(localTime);
+    return;
+  }
+
   const btn = document.getElementById('voteBtn');
   btn.disabled = true;
-  btn.textContent = '투표 중...';
+  btn.textContent = '확인 중... 🔍';
 
   try {
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify({ name, phone: cleanPhone, school: selectedSchool })
-    });
+    // ── STEP 2: 서버 중복 체크 ──────────────────────────────
+    const checkURL = SCRIPT_URL
+      + '?action=checkDuplicate'
+      + '&name='  + encodeURIComponent(name)
+      + '&phone=' + encodeURIComponent(cleanPhone)
+      + '&_='     + Date.now();
+
+    try {
+      const res = await fetch(checkURL);
+      const txt = await res.text();
+      const dup = JSON.parse(txt);
+      if (dup && dup.isDuplicate) {
+        // 서버에서 중복 감지 → 로컬에도 저장하고 오버레이
+        saveVoteLocal(name, cleanPhone);
+        showVotedOverlay(dup.lastVoteTime || new Date().toISOString());
+        return;
+      }
+    } catch(e) {
+      // 서버 체크 실패해도 계속 진행 (로컬로 관리)
+      console.warn('서버 중복체크 실패, 로컬 기준으로 진행');
+    }
+
+    // ── STEP 3: 투표 저장 ──────────────────────────────────
+    btn.textContent = '투표 중... 💛';
+    const voteTime = new Date().toISOString();
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode:   'no-cors',
+        body: JSON.stringify({
+          school: selectedSchool,
+          name:   name,
+          phone:  cleanPhone
+        })
+      });
+    } catch(e) {
+      showToast('네트워크 오류. 인터넷 연결을 확인해주세요. 📶');
+      return;
+    }
+
+    // ── STEP 4: 로컬에 저장 + 완료 모달 ───────────────────
+    saveVoteLocal(name, cleanPhone);
 
     document.getElementById('modalDesc').innerHTML =
       `<span class="modal-school-name">${selectedSchool}</span>에 투표했어요!<br>우리 학교 파이팅! 🌸🎉`;
     document.getElementById('modalOverlay').classList.add('show');
 
-    document.getElementById('nameInput').value = '';
+    document.getElementById('nameInput').value  = '';
     document.getElementById('phoneInput').value = '';
     selectedSchool = '';
     schoolInput.placeholder = '학교명을 검색하세요 (예: 건국대)';
     document.getElementById('selectedSchoolBox').classList.remove('show');
 
-    await fetchFromSheet(); // 랭킹 즉시 갱신
-  } catch(e) {
-    showToast('투표 전송에 실패했습니다. 다시 시도해주세요. 🔄');
+    await fetchFromSheet();
+
   } finally {
     btn.disabled = false;
     btn.textContent = '🌸 투표하기';
@@ -1031,44 +1583,52 @@ function renderRanking() {
   const sorted = getSortedSchools();
   const maxVotes = sorted.length > 0 ? sorted[0][1] : 1;
 
-  // Podium
-  const podium = document.getElementById('podium');
-  const medals = ['🥇','🥈','🥉'];
-  const orders = [1, 0, 2]; // 2nd, 1st, 3rd display
-  const podiumClasses = ['p2','p1','p3'];
-
+  // ── 포디움 (아바타 + 강화) ──
+  const podiumEl = document.getElementById('podium');
+  const PODIUM_CFG = [
+    { rank:1, cls:'p2', medal:'🥈', avatar:'🎓' },
+    { rank:0, cls:'p1', medal:'🥇', avatar:'👑' },
+    { rank:2, cls:'p3', medal:'🥉', avatar:'🎓' },
+  ];
   if (sorted.length === 0) {
-    podium.innerHTML = `<div style="text-align:center;color:var(--gray);font-size:14px;font-weight:500;width:100%;padding:30px 0;">아직 투표가 없어요! 첫 번째로 투표해보세요 🌸</div>`;
+    podiumEl.innerHTML = `<div style="text-align:center;color:var(--gray);font-size:14px;font-weight:500;width:100%;padding:40px 0;line-height:2;">아직 투표가 없어요!<br>첫 번째로 투표해보세요 🌸</div>`;
   } else {
-    const podiumItems = orders.map((rank, di) => {
+    podiumEl.innerHTML = PODIUM_CFG.map(({ rank, cls, medal, avatar }) => {
       const item = sorted[rank];
-      if (!item) return `<div class="podium-item ${podiumClasses[di]}"><div class="podium-block"><span style="font-size:18px;opacity:0.3">-</span></div></div>`;
+      if (!item) return `<div class="podium-item ${cls}"><div class="podium-avatar" style="background:#eee;color:#ccc;font-size:20px;">-</div><div class="podium-block"></div></div>`;
       return `
-        <div class="podium-item ${podiumClasses[di]}">
+        <div class="podium-item ${cls}">
+          <div class="podium-avatar">${avatar}</div>
           <div class="podium-school">${item[0]}</div>
           <div class="podium-votes">${item[1].toLocaleString()}표</div>
           <div class="podium-block">
-            <span>${medals[rank]}</span>
-            <div class="podium-rank">${rank + 1}위</div>
+            <div class="podium-rank-emoji">${medal}</div>
+            <div class="podium-rank-num">${rank+1}위</div>
           </div>
         </div>`;
-    });
-    podium.innerHTML = podiumItems.join('');
+    }).join('');
   }
 
-  // Rank list
-  const rankList = document.getElementById('rankList');
+  // ── 전체 순위 리스트 ──
+  const rankListEl = document.getElementById('rankList');
   if (sorted.length === 0) {
-    rankList.innerHTML = `<div style="text-align:center;color:var(--gray);font-size:14px;font-weight:500;padding:30px 0;">아직 투표가 없어요! 🌸</div>`;
+    rankListEl.innerHTML = `<div style="text-align:center;color:var(--gray);font-size:14px;font-weight:500;padding:40px 0;">아직 투표가 없어요! 🌸</div>`;
   } else {
-    rankList.innerHTML = sorted.map((item, i) => {
+    rankListEl.innerHTML = sorted.map((item, i) => {
       const pct = Math.round((item[1] / maxVotes) * 100);
+      const topCls = i===0?'top1':i===1?'top2':i===2?'top3':'';
+      const numLabel = i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1;
       return `
-        <div class="rank-item">
-          <div class="rank-num">${i + 1}</div>
-          <div class="rank-school">${item[0]}</div>
-          <div class="rank-bar-wrap"><div class="rank-bar" style="width:${pct}%"></div></div>
-          <div class="rank-votes">${item[1].toLocaleString()}표</div>
+        <div class="rank-item ${topCls}">
+          <div class="rank-num">${numLabel}</div>
+          <div class="rank-info">
+            <div class="rank-school">${item[0]}</div>
+            <div class="rank-bar-wrap"><div class="rank-bar" style="width:${pct}%"></div></div>
+          </div>
+          <div class="rank-votes-col">
+            <div class="rank-votes">${item[1].toLocaleString()}</div>
+            <div class="rank-votes-label">표</div>
+          </div>
         </div>`;
     }).join('');
   }
