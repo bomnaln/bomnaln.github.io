@@ -1498,10 +1498,12 @@ function checkOnLoad() {
 
 // ==============================
 // 🗳️ 투표하기
-// 중복 방지:
-//   1) 로컬(localStorage) — 같은 기기 즉시 차단
-//   2) 서버 checkDuplicate GET — 다른 기기 차단
-//   3) 저장은 no-cors POST (빠르고 안정적)
+// 중복 방지 설계 (기기 무관):
+//   ① localStorage — 같은 기기 즉시 차단
+//   ② Apps Script checkDuplicate — 다른 기기도 차단
+//      → 서버가 isDuplicate:true → 차단
+//      → 서버 응답 실패/타임아웃 → 차단 (안전 우선)
+//   ③ 중복 아님 확인 후 → POST 저장
 // ==============================
 async function submitVote() {
   const name  = document.getElementById('nameInput').value.trim();
@@ -1516,61 +1518,60 @@ async function submitVote() {
     showToast('올바른 전화번호를 입력해주세요! 📞'); return;
   }
 
-  // ── STEP 1: 로컬 캐시 먼저 확인 (같은 기기 즉시 차단) ───────
+  // ── STEP 1: 로컬 즉시 차단 ──────────────────────────────────
   const localTime = checkVoteLocal(name, cleanPhone);
-  if (localTime) {
-    showVotedOverlay(localTime);
-    return;
-  }
+  if (localTime) { showVotedOverlay(localTime); return; }
 
   const btn = document.getElementById('voteBtn');
   btn.disabled = true;
   btn.textContent = '확인 중... 🔍';
 
   try {
-    // ── STEP 2: 서버 중복 체크 (다른 기기 차단, 3초 타임아웃) ──
+    // ── STEP 2: 서버 중복 체크 (기기 무관 차단 핵심) ─────────
     const checkURL = SCRIPT_URL
       + '?action=checkDuplicate'
       + '&name='  + encodeURIComponent(name)
       + '&phone=' + encodeURIComponent(cleanPhone)
       + '&_='     + Date.now();
 
+    let dupResult = null;
     try {
-      const controller = new AbortController();
-      const tid = setTimeout(() => controller.abort(), 3000);
-      const res = await fetch(checkURL, { signal: controller.signal });
+      const ctrl = new AbortController();
+      const tid  = setTimeout(() => ctrl.abort(), 6000); // 6초 타임아웃
+      const res  = await fetch(checkURL, { signal: ctrl.signal });
       clearTimeout(tid);
-      const dup = JSON.parse(await res.text());
-      if (dup && dup.isDuplicate) {
-        const lastTime = dup.lastVoteTime || new Date().toISOString();
-        saveVoteLocal(name, cleanPhone);
-        showVotedOverlay(lastTime);
-        return;
-      }
+      const txt  = await res.text();
+      dupResult  = JSON.parse(txt);
     } catch(e) {
-      // 서버 체크 실패(타임아웃 등) → 로컬 기준으로 계속 진행
-      console.warn('서버 중복체크 실패, 로컬 기준으로 진행:', e.message);
-    }
-
-    // ── STEP 3: 저장 (no-cors POST — 빠르고 안정적) ────────────
-    btn.textContent = '투표 중... 💛';
-
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode:   'no-cors',
-        body: JSON.stringify({
-          school: selectedSchool,
-          name:   name,
-          phone:  cleanPhone
-        })
-      });
-    } catch(e) {
-      showToast('네트워크 오류. 인터넷 연결을 확인해주세요. 📶');
+      // 서버 응답 실패 → 안전하게 차단
+      showToast('네트워크 오류. 잠시 후 다시 시도해주세요. 🔄');
       return;
     }
 
-    // ── STEP 4: 로컬 저장 + 완료 모달 ──────────────────────────
+    // 중복 감지
+    if (dupResult && dupResult.isDuplicate === true) {
+      const lastTime = dupResult.lastVoteTime || new Date().toISOString();
+      saveVoteLocal(name, cleanPhone);
+      showVotedOverlay(lastTime);
+      return;
+    }
+
+    // 서버가 예상치 못한 응답 (구버전 등) → 차단
+    if (!dupResult || typeof dupResult.isDuplicate === 'undefined') {
+      showToast('서버 응답 오류. 잠시 후 다시 시도해주세요. 🔄');
+      return;
+    }
+
+    // ── STEP 3: 중복 없음 확인됨 → 저장 ─────────────────────
+    btn.textContent = '투표 중... 💛';
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode:   'no-cors',
+      body: JSON.stringify({ school: selectedSchool, name, phone: cleanPhone })
+    }).catch(() => {});
+
+    // ── STEP 4: 완료 처리 (저장과 동시에) ───────────────────
     saveVoteLocal(name, cleanPhone);
 
     document.getElementById('modalDesc').innerHTML =
@@ -1583,7 +1584,6 @@ async function submitVote() {
     schoolInput.placeholder = '학교명을 검색하세요 (예: 건국대)';
     document.getElementById('selectedSchoolBox').classList.remove('show');
 
-    // 순위 새로고침은 백그라운드에서 (투표 완료 후 비동기)
     fetchFromSheet().catch(() => {});
 
   } finally {
