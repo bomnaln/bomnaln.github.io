@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>봄날엔 캠퍼스 어택 🚚🌸</title>
 <meta property="og:title" content="봄날엔 캠퍼스 어택 🚚🌸">
-<meta property="og:description" content="✅지금 우리 대학교는 몇 등일까요?">
+<meta property="og:description" content="👀지금 우리 대학교는 몇 등일까요?👀">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap" rel="stylesheet">
 <style>
@@ -1498,8 +1498,11 @@ function checkOnLoad() {
 
 // ==============================
 // 🗳️ 투표하기
-// 시트 저장 순서: 투표일시 | 학교 | 이름 | 전화번호
-// 중복 기준: 이름 + 전화번호, 24시간 1회
+// 중복 방지 설계:
+//   1) 로컬(localStorage) — 같은 기기 즉시 차단
+//   2) 서버(Apps Script GET) — 다른 기기도 차단
+//      → 서버가 중복 감지하면 저장 자체가 안 됨
+//      → 서버 응답 없으면 투표 차단 (안전 우선)
 // ==============================
 async function submitVote() {
   const name  = document.getElementById('nameInput').value.trim();
@@ -1514,7 +1517,7 @@ async function submitVote() {
     showToast('올바른 전화번호를 입력해주세요! 📞'); return;
   }
 
-  // ── STEP 1: 로컬 캐시로 먼저 중복 확인 ──────────────────────
+  // ── STEP 1: 로컬 캐시 먼저 확인 (같은 기기 즉시 차단) ───────
   const localTime = checkVoteLocal(name, cleanPhone);
   if (localTime) {
     showVotedOverlay(localTime);
@@ -1526,48 +1529,44 @@ async function submitVote() {
   btn.textContent = '확인 중... 🔍';
 
   try {
-    // ── STEP 2: 서버 중복 체크 ──────────────────────────────
-    const checkURL = SCRIPT_URL
-      + '?action=checkDuplicate'
-      + '&name='  + encodeURIComponent(name)
-      + '&phone=' + encodeURIComponent(cleanPhone)
-      + '&_='     + Date.now();
+    // ── STEP 2: 서버에 중복 체크 + 저장 동시 요청 (GET) ────────
+    // GET 방식으로 보내면 CORS 응답을 정상 수신 가능
+    // Apps Script가 중복이면 저장 안 하고 isDuplicate:true 반환
+    const saveURL = SCRIPT_URL
+      + '?action=saveVote'
+      + '&name='   + encodeURIComponent(name)
+      + '&phone='  + encodeURIComponent(cleanPhone)
+      + '&school=' + encodeURIComponent(selectedSchool)
+      + '&_='      + Date.now();
 
-    try {
-      const res = await fetch(checkURL);
-      const txt = await res.text();
-      const dup = JSON.parse(txt);
-      if (dup && dup.isDuplicate) {
-        // 서버에서 중복 감지 → 로컬에도 저장하고 오버레이
-        saveVoteLocal(name, cleanPhone);
-        showVotedOverlay(dup.lastVoteTime || new Date().toISOString());
-        return;
-      }
-    } catch(e) {
-      // 서버 체크 실패해도 계속 진행 (로컬로 관리)
-      console.warn('서버 중복체크 실패, 로컬 기준으로 진행');
-    }
-
-    // ── STEP 3: 투표 저장 ──────────────────────────────────
     btn.textContent = '투표 중... 💛';
-    const voteTime = new Date().toISOString();
 
+    let result;
     try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode:   'no-cors',
-        body: JSON.stringify({
-          school: selectedSchool,
-          name:   name,
-          phone:  cleanPhone
-        })
-      });
+      const res = await fetch(saveURL);
+      const txt = await res.text();
+      result = JSON.parse(txt);
     } catch(e) {
-      showToast('네트워크 오류. 인터넷 연결을 확인해주세요. 📶');
+      // 서버 응답 실패 → 안전하게 차단 (다른 기기 중복 방지 우선)
+      showToast('서버 연결 오류. 잠시 후 다시 시도해주세요. 🔄');
       return;
     }
 
-    // ── STEP 4: 로컬에 저장 + 완료 모달 ───────────────────
+    // ── STEP 3: 서버 응답 처리 ──────────────────────────────────
+    if (result.isDuplicate) {
+      // 다른 기기에서 이미 투표한 경우
+      const lastTime = result.lastVoteTime || new Date().toISOString();
+      saveVoteLocal(name, cleanPhone);   // 로컬에도 기록
+      showVotedOverlay(lastTime);
+      return;
+    }
+
+    if (!result.success) {
+      showToast('저장 중 오류가 발생했어요. 다시 시도해주세요. 😢');
+      return;
+    }
+
+    // ── STEP 4: 성공 → 로컬 저장 + 완료 모달 ───────────────────
     saveVoteLocal(name, cleanPhone);
 
     document.getElementById('modalDesc').innerHTML =
@@ -1688,7 +1687,7 @@ function shareEvent() {
   if (navigator.share) {
     navigator.share({
       title: '봄날엔 캠퍼스 어택 대학 대항전',
-      text: '우리 학교 투표하면 달콤한 디저트 트럭이 온다! 지금 투표해요 🚚🌸',
+      text: '우리 대학교 투표하면 봄날엔 디저트 트럭이 간다! 🚚🌸 지금 바로 투표하세요!',
       url: window.location.href
     }).catch(() => {});
   } else {
